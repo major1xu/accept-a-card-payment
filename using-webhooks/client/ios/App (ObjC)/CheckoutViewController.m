@@ -20,6 +20,7 @@ NSString *const BackendUrl = @"http://127.0.0.1:4242/";
 
 @property (weak) STPPaymentCardTextField *cardTextField;
 @property (weak) UIButton *payButton;
+@property (weak) UITextField *amountField;
 @property (strong) NSString *paymentIntentClientSecret;
 
 @end
@@ -101,7 +102,7 @@ NSString *const BackendUrl = @"http://127.0.0.1:4242/";
             NSString *publishableKey = dataDict[@"publishableKey"];
             // Configure the SDK with your Stripe publishable key so that it can make requests to the Stripe API
             // For added security, our sample app gets the publishable key from the server
-            [StripeAPI setDefaultPublishableKey:publishableKey];
+            [Stripe setDefaultPublishableKey:publishableKey];
         }
     }];
     [task resume];
