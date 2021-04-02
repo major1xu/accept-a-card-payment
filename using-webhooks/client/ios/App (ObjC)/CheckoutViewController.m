@@ -35,6 +35,15 @@ NSString *const BackendUrl = @"http://127.0.0.1:4242/";
     STPPaymentCardTextField *cardTextField = [[STPPaymentCardTextField alloc] init];
     self.cardTextField = cardTextField;
 
+    // https://stackoverflow.com/questions/15690308/creating-text-fields-programmatically/15690514
+    //first one
+    UITextField *tf = [[UITextField alloc] initWithFrame:CGRectMake(45, 30, 200, 40)];
+    tf.textColor = [UIColor colorWithRed:0/256.0 green:84/256.0 blue:129/256.0 alpha:1.0];
+    tf.font = [UIFont fontWithName:@"Helvetica-Bold" size:25];
+    tf.backgroundColor=[UIColor whiteColor];
+    tf.text=@"$14.00";
+    self.amountField = tf;
+    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.layer.cornerRadius = 5;
     button.backgroundColor = [UIColor systemBlueColor];
@@ -43,7 +52,7 @@ NSString *const BackendUrl = @"http://127.0.0.1:4242/";
     [button addTarget:self action:@selector(pay) forControlEvents:UIControlEventTouchUpInside];
     self.payButton = button;
 
-    UIStackView *stackView = [[UIStackView alloc] initWithArrangedSubviews:@[cardTextField, button]];
+    UIStackView *stackView = [[UIStackView alloc] initWithArrangedSubviews:@[tf, cardTextField, button]];
     stackView.axis = UILayoutConstraintAxisVertical;
     stackView.translatesAutoresizingMaskIntoConstraints = NO;
     stackView.spacing = 20;
